@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "351335683511",
+    "project_id": "dartfri",
+    "storage_bucket": "dartfri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351335683511:android:d775a55dfc6d7e6c030432",
+        "android_client_info": {
+          "package_name": "com.example.bay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351335683511-6u2ov24hvnmhqhtcc5tr9vvtt8dlc35i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bay",
+            "certificate_hash": "43734e2b4bc2b7b154261041b8ae8e31006384b8"
+          }
+        },
+        {
+          "client_id": "351335683511-pdecuqhf7pnrc4ulo13o06v5v6h3svk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY3rZLJ3_q74Akc0iT-HWqQ6hUJL7Ge-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351335683511-pdecuqhf7pnrc4ulo13o06v5v6h3svk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "351335683511-qbr427t1lkt0fmdci8re5pmcc3bavjs9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bay"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351335683511:android:5f3798b976b41dbc030432",
+        "android_client_info": {
+          "package_name": "com.example.dartfri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351335683511-pdecuqhf7pnrc4ulo13o06v5v6h3svk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY3rZLJ3_q74Akc0iT-HWqQ6hUJL7Ge-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351335683511-pdecuqhf7pnrc4ulo13o06v5v6h3svk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "351335683511-qbr427t1lkt0fmdci8re5pmcc3bavjs9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bay"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
