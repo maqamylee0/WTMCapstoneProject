@@ -26,9 +26,8 @@ class EnableFingerPrint extends StatelessWidget {
               height: 180,
                 width: 180,
                 child: Image.asset('assets/Fingerprint.png')),
-            Text('Enable FingerPrint'),
-            Text('If you enable touch ID you won’t be required to input your \n'
-                ' password when you login'),
+            Text('Use FingerPrint'),
+            Text('Passwordless Login'),
             SizedBox(
               height: 42,
               child: ElevatedButton(

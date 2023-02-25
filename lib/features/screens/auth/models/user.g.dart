@@ -12,6 +12,7 @@ Users _$UsersFromJson(Map<String, dynamic> json) => Users(
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       photoUrl: json['photoUrl'] as String?,
+      fav_placesId: json['fav_placesId'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
@@ -20,4 +21,5 @@ Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
       'name': instance.name,
       'phone': instance.phone,
       'photoUrl': instance.photoUrl,
+      'fav_placesId': instance.fav_placesId,
     };

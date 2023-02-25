@@ -7,9 +7,10 @@ class Users {
   String? name;
   String? phone;
   String? photoUrl;
+  List? fav_placesId;
 
 
-  Users({this.uid, this.email, this.name, this.phone,this.photoUrl});
+  Users({this.uid, this.email, this.name, this.phone,this.photoUrl,this.fav_placesId});
 
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
 

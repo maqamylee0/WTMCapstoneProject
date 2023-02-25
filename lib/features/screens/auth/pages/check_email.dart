@@ -99,7 +99,7 @@ class _CheckMailState extends State<CheckMail> {
     sendVerifyEmail();
 
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const DashboardPage()));
+        MaterialPageRoute(builder: (context) =>  DashboardPage()));
   }
 
   Future sendVerifyEmail() async {
