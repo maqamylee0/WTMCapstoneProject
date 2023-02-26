@@ -1,12 +1,15 @@
 import 'package:dartfri/features/screens/auth/pages/enable_fingerprint.dart';
 import 'package:dartfri/features/screens/auth/pages/signup.dart';
+import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:status_alert/status_alert.dart';
 
 import '../../../../services/auth_service.dart';
+import '../../../../services/local_auth_fingerprint.dart';
 import 'forgot_password.dart';
 
 
@@ -161,9 +164,21 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         (isSinedUp != null) ? Align(
                           alignment: Alignment.center,
-                          child: TextButton(onPressed: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const EnableFingerPrint()));
+                          child: TextButton(onPressed: () async {
+    final isAuthenticated = await LocalAuthApi.authenticate();
+    if (isAuthenticated){
+    StatusAlert.show(
+    context,
+    duration: Duration(seconds: 2),
+    title: 'Successful',
+    subtitle: 'Successfully logged in',
+    configuration: IconConfiguration(icon: Icons.done),
+    maxWidth: 260,
+    );
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) =>  DashboardPage()));
+    }
+
                           }, child: Text('Use Fingerprint')),
                         ):Container()
                       ]),

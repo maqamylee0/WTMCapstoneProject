@@ -1,7 +1,9 @@
 import 'package:dartfri/features/pageImports.dart';
+import 'package:dartfri/features/screens/appointment/pages/review_appointment.dart';
 import 'package:dartfri/features/screens/bookings/bookings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -44,6 +46,8 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
     selectedRadioTile = 1;
     selectedRadio2 = 1;
     selectedRadioTile2 = 1;
+    appointment.date = date.toString();
+    appointment.time = time.toString();
   }
   setSelectedRadioTile2(int val) {
     setState(() {
@@ -58,8 +62,14 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
     });
   }
   confirmAppointment(appointmentProvider){
-    showAlertDialog(context, appointmentProvider);
-
+    appointment.cartype = kind[selectedRadioTile-1];
+    appointment.kind = type[selectedRadioTile2-1];
+    // appointment.userId =
+    appointment.placeName = widget.place?.name;
+    appointment.status = 'pending';
+    appointment.placeId = widget.place?.uid;
+    // showAlertDialog(context, appointmentProvider);
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewAppointment(appointment:appointment,place:widget.place!)));
   }
 
   makeAppointment(appointmentProvider){
@@ -83,8 +93,10 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
+
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     appointment.userId = userProvider.user.uid;
@@ -484,6 +496,13 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
   }
   showAlertDialog(BuildContext context,appointmentProvider) {
 
+      DateTime date = DateTime.parse(appointment.date!);
+      // var formatter = new DateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", 'en');
+
+      // DateTime tempDate =Intl.withLocale('en', () => new DateFormat("yyyy-MM-dd hh:mm").parse(appointment.date!));
+      // var formattedDate = DateFormat('EEEE, MMM d, yyyy').format(date);
+
+      // DateFormat('MMMM d, y', 'en_US').parse(appointment.date!);
     // set up the button
     Widget okButton = TextButton(
       child: Text("OK"),
@@ -500,26 +519,61 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Confirm Appointment"),
+      title: Text("Review Appointment"),
       content: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-              Text('Place :',style: TextStyle(fontSize: 20,color: Palette.primaryDartfri),),
-              Text('${widget.place?.name}'),
 
 
 
-              Text('Day :',style: TextStyle(fontSize: 20,color: Palette.primaryDartfri)),
-              Text('${appointment.date}'),
+
+          Text('Date & Time :'),
+          SizedBox(height: 5,),
+
+          Text('${date.day} / ${date.month}/ ${date.year}',style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.w600)),
+          SizedBox(height: 5,),
+
+          Text('${appointment.time}',style: TextStyle(fontSize: 15,color:Colors.black,fontWeight: FontWeight.w600)),
+
+          SizedBox(height: 20,),
+          Text('Washing Bay :'),
+          SizedBox(height: 5,),
+
+          Text('${widget.place?.name}',style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.w600)),
+          SizedBox(height: 5,),
+         Text('${widget.place?.address}',style: TextStyle(fontSize: 15,color:Colors.black,fontWeight: FontWeight.w600)),
 
 
-              Text('Time :',style: TextStyle(fontSize: 20,color: Palette.primaryDartfri)),
-              Text('${appointment.time}'),
 
 
-              Text('Car Type :',style: TextStyle(fontSize: 20,color: Palette.primaryDartfri)),
-              Text('${type[selectedRadioTile2-1]}')
+
+
+        SizedBox(height: 20,),
+
+              Text('Car Selected :'),
+          SizedBox(height: 5,),
+
+          Text('${kind[selectedRadioTile-1]}',style: TextStyle(fontSize: 15,color:Colors.black,fontWeight: FontWeight.w600)),
+          SizedBox(height: 20,),
+
+          Text('Pick Up Address :'),
+          SizedBox(height: 5,),
+
+          Text('${'_'}',style: TextStyle(fontSize: 15,color:Colors.black,fontWeight: FontWeight.w600)),
+          SizedBox(height: 20,),
+
+          Text('Delivery Address :'),
+          SizedBox(height: 5,),
+
+          Text('${'_'}',style: TextStyle(fontSize: 15,color:Colors.black,fontWeight: FontWeight.w600)),
+          SizedBox(height: 20,),
+
+          Text('Total Cost :'),
+          SizedBox(height: 5,),
+
+          Text('${appointment.amount}',style: TextStyle(fontSize: 20,color:Palette.primaryDartfri,fontWeight: FontWeight.w600))
+
 
         ],
       ),

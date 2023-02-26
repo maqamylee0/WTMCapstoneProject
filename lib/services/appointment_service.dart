@@ -1,6 +1,7 @@
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class AppointmentService{
       });
       postAppointment(appointment,appointmentId);
 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BookingsPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
 
     }catch(e){
       BotToast.showText(text:"Failed to make appointment");
@@ -47,7 +48,7 @@ class AppointmentService{
           .doc(appointment.appointmentId)
           .update({ 'status' : "cancelled"});
       Navigator.pop(context);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BookingsPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
 
 
     } catch (e) {

@@ -12,6 +12,7 @@ import '../../../keys.dart';
 import '../../../providers/places_provider.dart';
 import '../../../providers/user_provider.dart';
 import '../nearby_places/pages/nearby_places.dart';
+import '../wallet/pages/wallet_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -121,7 +122,8 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Welcome Back , ${users.user.name}!',style: TextStyle(fontSize: 22,color: Colors.white),),
+                      (users.username) != '' ? Text('Welcome Back , ${users.user.name}!',style: TextStyle(fontSize: 22,color: Colors.white),):
+                      Text('Welcome Back , !',style: TextStyle(fontSize: 22,color: Colors.white),),
 
                       Container(
                         child: Row(
@@ -152,6 +154,52 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       )
+
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text('Quick Services'),
+                SizedBox(height: 10,),
+
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>WalletPage()));
+                        },
+                        child: Container(
+                            width: 120,
+                            height: 80,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              // color: Color(0xFFD3FBFF),
+                              // color: Palette.primaryDartfri,
+                              border: Border.all(color: Palette.primaryDartfri,width: 1.5),
+                              borderRadius: BorderRadius.circular(20),
+
+                            ),
+                            child: Center(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height:30,
+
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(100),
+                                        // color: Color(0xFFD3FBFF),
+
+                                        // color: ,
+                                      ),
+                                      child: Image.asset('assets/wallet.png'),
+                                    ),
+                                    Text('Top Up Wallet',style: TextStyle(fontSize: 12),)
+                                  ],
+                                ))),
+                      ),
+
 
                     ],
                   ),

@@ -58,6 +58,7 @@ dependencies:
   google_maps_webservice: ^0.0.20-nullsafety.5
   flutter_rating_bar: ^4.0.1
   uuid: ^3.0.7
+  intl:
 dev_dependencies:
   flutter_test:
     sdk: flutter

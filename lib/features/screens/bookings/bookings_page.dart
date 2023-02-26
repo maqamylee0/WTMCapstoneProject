@@ -95,7 +95,8 @@ class CancelledView extends StatelessWidget {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     Stream<List> getAppointements () async* {
-      appointments = await  appointmentProvider.getAppointments(userProvider.user.uid!) ;
+      appointments = await  appointmentProvider.caancelled_appointments ;
+
 
       yield appointments;
     }
@@ -134,7 +135,7 @@ class FinishedView extends StatelessWidget {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
     // List appointments = appointmentProvider.appointments;
     Stream<List> getAppointements () async* {
-      appointments = await  appointmentProvider.getAppointments(userProvider.user.uid!) ;
+      appointments = await  appointmentProvider.done_appointments ;
 
       yield appointments;
     }
@@ -164,14 +165,13 @@ class UpcomingView extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   List appointments =[];
-
   @override
   Widget build(BuildContext context) {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
 
     Stream<List> getAppointements () async* {
-      appointments = await  appointmentProvider.getAppointments(userProvider.user.uid!) ;
+      appointments = await  appointmentProvider.pending_appointments ;
 
       yield appointments;
     }

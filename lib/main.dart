@@ -7,7 +7,12 @@ import 'package:dartfri/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 import 'firebase_options.dart';
 Future<void> main() async {
@@ -15,6 +20,8 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  initializeDateFormatting(); //very important
+
   runApp(
       MultiProvider(
         providers: [
@@ -29,13 +36,26 @@ Future<void> main() async {
       ),);
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('en');
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      initializeDateFormatting();
+    }
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       title: 'Capstone project',
       theme: ThemeData(

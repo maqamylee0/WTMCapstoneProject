@@ -25,6 +25,9 @@ class AppointmentProvider extends ChangeNotifier{
   late String appointmentId ;
   List appointments = [];
   Auth auth = Auth();
+  List done_appointments=[];
+  List caancelled_appointments=[];
+  List pending_appointments=[];
 
 
   AppointmentProvider(){
@@ -33,7 +36,7 @@ class AppointmentProvider extends ChangeNotifier{
 
     getAllPlaces();
     getUserDetails();
-    // getAppointments();
+    getAppointments();
   }
 
   // Future<void> setreviewid(List <dynamic> reviewIdss) async {
@@ -74,7 +77,6 @@ class AppointmentProvider extends ChangeNotifier{
   Future<void> getPlace(String? uid) async {
     user = await _placeService.getUserDetails(uid);
     username = user.name!;
-    // print('uuuuuuuuuuuuuuuuuuuuuuuuuuu ${user.uid}');
 
     // await getAppointments(user.uid);
     notifyListeners();
@@ -105,9 +107,19 @@ class AppointmentProvider extends ChangeNotifier{
   }
   // List getAppointmentss()=> appointments;
 
-  Future<List> getAppointments(String uid) async {
+  Future<List> getAppointments() async {
 
-    appointments = await _appointmentService.getAppointments(uid);
+    appointments = await _appointmentService.getAppointments(FirebaseAuth.instance.currentUser?.uid);
+    appointments.forEach((element){
+      if (element.status =='done' ){
+        done_appointments.add(element);
+      }else if(element.status == 'cancelled'){
+        caancelled_appointments.add(element);
+      }else {
+        pending_appointments.add(element);
+      }
+
+    });
     // username = user.name!;
     notifyListeners();
     // print('apppppppppppppppppppppppp ${appointments.length}');
