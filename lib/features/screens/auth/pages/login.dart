@@ -10,6 +10,7 @@ import 'package:status_alert/status_alert.dart';
 
 import '../../../../services/auth_service.dart';
 import '../../../../services/local_auth_fingerprint.dart';
+import '../../home/location_page.dart';
 import 'forgot_password.dart';
 
 
@@ -167,16 +168,16 @@ class _LoginPageState extends State<LoginPage> {
                           child: TextButton(onPressed: () async {
     final isAuthenticated = await LocalAuthApi.authenticate();
     if (isAuthenticated){
-    StatusAlert.show(
-    context,
-    duration: Duration(seconds: 2),
-    title: 'Successful',
-    subtitle: 'Successfully logged in',
-    configuration: IconConfiguration(icon: Icons.done),
-    maxWidth: 260,
-    );
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) =>  DashboardPage()));
+    // StatusAlert.show(
+    // context,
+    // duration: Duration(seconds: 2),
+    // title: 'Successful',
+    // subtitle: 'Successfully logged in',
+    // configuration: IconConfiguration(icon: Icons.done),
+    // maxWidth: 260,
+    // );
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) =>  LocationPage()));
     }
 
                           }, child: Text('Use Fingerprint')),

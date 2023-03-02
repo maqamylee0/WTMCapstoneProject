@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import '../features/screens/auth/models/user.dart';
+import '../features/screens/nearby_places/models/offer.dart';
 import '../features/screens/nearby_places/models/place.dart';
 import 'auth_service.dart';
 
@@ -23,7 +24,32 @@ class PlaceService{
           doc.add(therapist);
         });
       });
-      print('hiiiiiiii ${doc.length}');
+      // print('hiiiiiiii ${doc.length}');
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    // navigatorKey.currentState!.popUntil((route)=>route.);
+    // print(doc['nin']);
+    return doc;
+  }
+  Future<List<Offer>> getAllOffers() async {
+    //returns all therapist from firestore collection
+    List<Offer> doc = [];
+    try {
+      FirebaseFirestore mFirebaseFirestore = FirebaseFirestore.instance;
+
+      await mFirebaseFirestore.collection('offers')
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Offer offer = Offer.fromJson(
+              Map<String, dynamic>.from(element.data()));
+          doc.add(offer);
+        });
+      });
+      // print('hiiiiiiii ${doc.length}');
     } catch (e) {
       if (kDebugMode) {
         print(e);

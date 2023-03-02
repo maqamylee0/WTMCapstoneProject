@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                     height: 130,width: 130,
                     child: Image.asset('assets/logo_noback.png')),
-                CircleAvatar()
+                Icon(CupertinoIcons.bell,size: 30,color: Palette.primaryDartfri,)
 
               ],
             ),
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                           children: [
                            Icon(CupertinoIcons.map_pin_ellipse),
                             SizedBox(width: 20,),
-                            Text("${places.city}",style: TextStyle(height: 0.6),),
+                            Text("${users.currentAddress}",style: TextStyle(height: 0.6),),
                           ],
                         ),
 
@@ -87,22 +87,27 @@ class HomePage extends StatelessWidget {
                                   offset: 0,
                                   radius: 1000,
                                   strictbounds: false,
-                                  region: "ug",
+                                  region: "ng",
                                   language: "en",
                                   context: context,
                                   mode: Mode.overlay,
                                   apiKey: Keys.kGoogleApiKey,
                                   sessionToken: Keys.sessionToken,
-                                  components: [new Component(Component.country, "ug")],
+                                  components: [new Component(Component.country, "ng")],
                                   types: ["(cities)"],
                                   hint: "Search City",
                                   startText: places.city == null || places.city == "" ? "" : places.city
                               );
                               _getLatLng(p!,places);
 
-                            }, child: Text("Change",style: TextStyle(height:0.6,fontSize: 12),))
+                            }, child: Row(
+                              children: [
+                                Text("Change",style: TextStyle(height:0.6,fontSize: 12),),
+                                Icon(Icons.arrow_drop_down,size: 25,)
+
+                              ],
+                            ))
                             ,
-                            Icon(Icons.arrow_drop_down,size: 25,)
                           ],
 
                         )

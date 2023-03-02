@@ -14,6 +14,8 @@ import 'package:status_alert/status_alert.dart';
 import '../features/screens/auth/models/user.dart' as UserModel;
 import '../features/screens/auth/models/user.dart';
 import '../features/screens/dashboard/dashboard_page.dart';
+import '../features/screens/home/location_page.dart';
+import '../features/screens/notifications/models/notifications.dart';
 
 ///
 class Auth{
@@ -108,7 +110,7 @@ class Auth{
 
       Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  DashboardPage())
+          MaterialPageRoute(builder: (context) =>  LocationPage())
 
       );
     } on FirebaseException catch(e){
@@ -170,6 +172,48 @@ class Auth{
     // navigatorKey.currentState!.popUntil((route)=>route.);
     // print(doc['nin']);
     return doc;
+  }
+
+  Future<void> sendNotifications(Notifications notification) async {
+   
+    try{
+      await FirebaseFirestore.instance
+          .collection("notifications")
+          .add(notification.toJson())
+          .catchError((e){
+        BotToast.showText(text: e!.message);
+      });
+    }catch(e){
+      BotToast.showText(text:"Failed to post notification");
+    }
+
+    // Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+  }
+  Future<List<Notifications>>  getNotifications(userId) async {
+    List<Notifications>  notifications= [];
+    try{
+      await FirebaseFirestore.instance
+          .collection("notifications").where(
+          "userId" ,whereIn: <String>[userId, 'all'] )
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((doc) {
+          Notifications notification = Notifications.fromJson(
+              Map<String, dynamic>.from(doc.data()));
+          notifications.add(notification);
+
+        });
+      })
+          .catchError((e){
+        BotToast.showText(text: e!.message);
+
+      });
+    }catch(e){
+      BotToast.showText(text: "Failed to get appointments");
+
+    }
+    return notifications;
   }
 
 }

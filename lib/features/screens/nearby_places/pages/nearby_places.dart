@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../keys.dart';
 import '../../../../providers/places_provider.dart';
+import '../../../../providers/user_provider.dart';
 import '../place_widget.dart';
 
 class NearbyPlaces extends StatefulWidget {
@@ -21,6 +22,7 @@ class _NearbyPlacesState extends State<NearbyPlaces> {
   @override
   Widget build(BuildContext context) {
     final places = Provider.of<PlacesProvider>(context);
+    final user = Provider.of<UserProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -33,7 +35,7 @@ class _NearbyPlacesState extends State<NearbyPlaces> {
         ),
         body:
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -50,7 +52,7 @@ class _NearbyPlacesState extends State<NearbyPlaces> {
                           children: [
                             Icon(CupertinoIcons.map_pin_ellipse),
                             SizedBox(width: 20,),
-                            Text("${places.city}",style: TextStyle(height: 0.6),),
+                            Text("${user.currentAddress}",style: TextStyle(height: 0.6),),
                           ],
                         ),
 
@@ -64,22 +66,27 @@ class _NearbyPlacesState extends State<NearbyPlaces> {
                                   offset: 0,
                                   radius: 1000,
                                   strictbounds: false,
-                                  region: "ug",
+                                  region: "ng",
                                   language: "en",
                                   context: context,
                                   mode: Mode.overlay,
                                   apiKey: Keys.kGoogleApiKey,
                                   sessionToken: Keys.sessionToken,
-                                  components: [new Component(Component.country, "ug")],
+                                  components: [new Component(Component.country, "ng")],
                                   types: ["(cities)"],
                                   hint: "Search City",
                                   startText: places.city == null || places.city == "" ? "" : places.city
                               );
                               _getLatLng(p!,places);
 
-                            }, child: Text("Change",style: TextStyle(height:0.6,fontSize: 12),))
+                            }, child: Row(
+                              children: [
+                                Text("Change",style: TextStyle(height:0.6,fontSize: 12),),
+                                Icon(Icons.arrow_drop_down,size: 25,)
+
+                              ],
+                            ))
                             ,
-                            Icon(Icons.arrow_drop_down,size: 25,)
                           ],
 
                         )

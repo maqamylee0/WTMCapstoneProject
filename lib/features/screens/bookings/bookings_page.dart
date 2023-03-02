@@ -39,9 +39,9 @@ class _BookingsPageState extends State<BookingsPage>with TickerProviderStateMixi
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // SizedBox(height: 50,),
-              Text("Appointment", style:TextStyle(fontWeight: FontWeight.w600,fontSize: 30,),),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
+              Text("Bookings", style:TextStyle(fontWeight: FontWeight.w600,fontSize: 30,),),
+              SizedBox(height: 5,),
               Container(
                 decoration: BoxDecoration(
                   //This is for background color
@@ -54,7 +54,7 @@ class _BookingsPageState extends State<BookingsPage>with TickerProviderStateMixi
                     unselectedLabelColor: Colors.black,
                     indicatorColor:Palette.primaryDartfri ,
                     tabs:[
-                      Tab(text: "Upcoming",),
+                      Tab(text: "Active",),
                       Tab(text: "Finished",),
                       Tab(text: "Cancelled",),
                     ]
@@ -114,7 +114,7 @@ class CancelledView extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context,index){
 
-                  return AppointmentCard(appointment: appointments[index],);
+                  return AppointmentCard(appointment: appointments[index], action:"cancel");
                 }),
           ):Container();
         }
@@ -152,7 +152,7 @@ class FinishedView extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context,index){
 
-                  return AppointmentCard(appointment: appointments[index]);
+                  return AppointmentCard(appointment: appointments[index],action: 'finished',);
                 }),
           ):Container();
         }
@@ -188,7 +188,7 @@ class UpcomingView extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context,index){
 
-                    return AppointmentCard(appointment: appointments[index]);
+                    return AppointmentCard(appointment: appointments[index],action: 'active',);
                   })
           ):Container();
         }

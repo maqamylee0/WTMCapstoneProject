@@ -2,6 +2,7 @@ import 'package:dartfri/features/screens/nearby_places/models/place.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../features/screens/auth/models/user.dart';
+import '../features/screens/nearby_places/models/offer.dart';
 import '../services/auth_service.dart';
 import '../services/places_service.dart';
 
@@ -10,7 +11,11 @@ class PlacesProvider extends ChangeNotifier {
   late PlaceService _placeService;
   late Auth _auth;
   List<Place> places = [];
+  List<Offer> offers = [];
+
   List<Place> newPlaces = [];
+  List<Offer> newOffers = [];
+
   List fav = [];
   bool search = false;
   String city = 'Entebbe, Uganda';
@@ -20,6 +25,7 @@ class PlacesProvider extends ChangeNotifier {
     _auth = Auth();
     getAllPlaces();
     getUserDetails();
+    getAllOffers();
   }
   void setCity(String place){
     city = place;
@@ -28,6 +34,11 @@ class PlacesProvider extends ChangeNotifier {
   Future<void> getAllPlaces() async {
     places = await _placeService.getAllPlaces();
     newPlaces = places;
+    notifyListeners();
+  }
+  Future<void> getAllOffers() async {
+    offers = await _placeService.getAllOffers();
+    newOffers = offers;
     notifyListeners();
   }
   void setSearch(bool bool){

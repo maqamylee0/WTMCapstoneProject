@@ -92,23 +92,31 @@ class AppointmentProvider extends ChangeNotifier{
 
     appointmentId = await _appointmentService.makeAppointment(appointment,context);
     // username = user.name!;
+    await getAppointments();
+
     notifyListeners();
   }
   Future<void> cancelAppointment(Appointment appointment,context) async {
 
     await _appointmentService.cancelAppointment(appointment,context);
     // username = user.name!;
+    await getAppointments();
+
     notifyListeners();
   }
   Future<void> makePayment(payment) async {
     await _appointmentService.makePayment(payment);
     // username = user.name!;
+    getAppointments();
     notifyListeners();
   }
   // List getAppointmentss()=> appointments;
 
   Future<List> getAppointments() async {
-
+    appointments = [];
+    caancelled_appointments = [];
+    done_appointments = [];
+    pending_appointments = [];
     appointments = await _appointmentService.getAppointments(FirebaseAuth.instance.currentUser?.uid);
     appointments.forEach((element){
       if (element.status =='done' ){

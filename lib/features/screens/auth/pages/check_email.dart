@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:status_alert/status_alert.dart';
 
+import '../../home/location_page.dart';
 import 'login.dart';
 
 class CheckMail extends StatefulWidget {
@@ -99,7 +100,7 @@ class _CheckMailState extends State<CheckMail> {
     sendVerifyEmail();
 
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) =>  DashboardPage()));
+        MaterialPageRoute(builder: (context) =>  LocationPage()));
   }
 
   Future sendVerifyEmail() async {

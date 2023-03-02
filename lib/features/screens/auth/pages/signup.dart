@@ -1,8 +1,10 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:dartfri/features/pageImports.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import '../../../../services/auth_service.dart';
 import '../models/user.dart';
@@ -30,7 +32,11 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
+  String initialCountry = 'NG';
+  PhoneNumber number = PhoneNumber(isoCode: 'NG');
+  String phone = "9900265566";
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -87,29 +93,53 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         SizedBox(height: 20),
+                        Stack(
+                          children:[
+                            Container(
+                            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            decoration: BoxDecoration(
+                              // border: Border.all(color: Colors.grey)
+                            ),
+                            child: InternationalPhoneNumberInput(
 
-                        SizedBox(
-                          height: 70,
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            controller: _phoneController,
-                            validator: (phone) => phone != null && phone.length == 13
-                                ? null
-                                : "Enter a minimum of 12 digits",
-                            decoration: InputDecoration(
-                              labelText: 'Phone number',
-                              hintText: '+234***',
-                              border: OutlineInputBorder(),
 
-                              // Here is key idea
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.phone_outlined),
-                                color: Colors.grey,
-                                onPressed: () {},
+                              onInputChanged: (PhoneNumber number) {
+                                print(number.phoneNumber);
+                              },
+                              // onInputValidated: (bool value) {
+                              //   print(value);
+                              // },
+                              selectorConfig: const SelectorConfig(
+                                selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                               ),
+                              hintText: "772024843",
+                              ignoreBlank: false,
+                              autoValidateMode: AutovalidateMode.disabled,
+                              selectorTextStyle: TextStyle(color: Colors.black),
+                              initialValue: number,
+                              textFieldController: controller,
+                              formatInput: false,
+                              inputBorder: InputBorder.none,
+                              keyboardType:
+                              TextInputType.numberWithOptions(signed: true, decimal: true),
+                              onSaved: (PhoneNumber number) {
+                                print('On Saved: $number');
+                              },
                             ),
                           ),
+                            Positioned(
+                              top: 17,
+                              left: 90,
+                              height: 30,
+                              child: VerticalDivider(
+                                color: Palette.primaryDartfri,
+                                thickness: 0.8,
+                              ),
+                            )
+                          ]
                         ),
+
+
                         SizedBox(height: 20),
 
                         SizedBox(
@@ -261,7 +291,7 @@ class _SignUpPageState extends State<SignUpPage> {
       // writing all the values
 
       userModel.name = _nameController.text;
-      userModel.phone = _phoneController.text;
+      userModel.phone = controller.text;
       print(userModel);
 
       auth.signUp(_emailController.text, _userPasswordController.text,

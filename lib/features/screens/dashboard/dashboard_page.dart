@@ -1,14 +1,18 @@
 import 'package:dartfri/features/screens/account/account_page.dart';
-import 'package:dartfri/features/screens/home/home_page.dart';
+import 'package:dartfri/features/screens/home/home_new_page.dart';
+import 'package:dartfri/features/screens/notifications/pages/notification_page.dart';
+import 'package:dartfri/features/screens/wallet/pages/wallet_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
+import '../account/pages/profile_page.dart';
 import '../bookings/bookings_page.dart';
 
 class DashboardPage extends StatefulWidget {
 
-   DashboardPage({Key? key}) : super(key: key);
+   DashboardPage({Key? key, }) : super(key: key);
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
@@ -23,9 +27,10 @@ class _DashboardPageState extends State<DashboardPage> {
       body:  IndexedStack(
           children: [
             BookingsPage(),
-             HomePage(),
-            AccountPage()
-
+            HomeNewPage(),
+            WalletPage(),
+            NotificationPage(),
+            ProfilePage()
           ],
           index: _currentIndex,
         ),
@@ -49,6 +54,18 @@ class _DashboardPageState extends State<DashboardPage> {
                 color: Colors.black,
               ),
               label: "Home"),
+          BottomNavigationBarItem(
+              icon: FaIcon(
+                Icons.wallet,
+                color: Colors.black,
+              ),
+              label: "Wallet"),
+          BottomNavigationBarItem(
+              icon: FaIcon(
+                Icons.notifications,
+                color: Colors.black,
+              ),
+              label: "Notification"),
           BottomNavigationBarItem(
               icon: FaIcon(
                 CupertinoIcons.settings_solid,

@@ -1,7 +1,13 @@
+import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/appointment/models/appointment.dart';
+import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
+import 'package:dartfri/features/screens/wallet/widgets/phone_input_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:status_alert/status_alert.dart';
 
+import '../../../../providers/appointment_provider.dart';
 import '../../nearby_places/models/place.dart';
 import '../../payment/pages/payment.dart';
 
@@ -12,6 +18,7 @@ final Place place;
 
   @override
   Widget build(BuildContext context) {
+
     DateTime date = DateTime.parse(appointment.date!);
 
     return SafeArea(child: Scaffold(
@@ -111,7 +118,8 @@ final Place place;
                         55), // fromHeight use double.infinity as width and 40 is the height
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentPage()));
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PhoneInput(appointment:appointment)));
                   },
                   child: const Text(
                     'Proceed to Payment',

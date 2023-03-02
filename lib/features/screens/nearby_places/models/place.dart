@@ -9,10 +9,10 @@ class Place{
   String? latitude;
   String? longitude;
   String? address;
-  String? ratings;
+  String? rating;
+  String? imgUrl;
 
-
-  Place({this.uid,this.name,this.latitude,this.longitude,this.address,this.ratings});
+  Place({this.uid,this.name,this.latitude,this.longitude,this.address,this.rating});
   factory Place.fromJson(Map<String, dynamic> json) => _$PlaceFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlaceToJson(this);

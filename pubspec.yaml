@@ -59,6 +59,13 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   uuid: ^3.0.7
   intl:
+  footer: ^0.0.4
+  geolocator: ^9.0.2
+  geocoding: ^2.0.5
+  cached_network_image: ^3.2.3
+  intl_phone_number_input:
+  google_fonts: ^4.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -83,7 +90,14 @@ flutter_native_splash:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+#  fonts:
+#    - family: Inter
+#      fonts:
+#        - asset: fonts/Inter-Regular.ttf
+#        - asset: fonts/Inter-Italic.ttf
+#          style: italic
+#        - asset: fonts/Inter-Bold.ttf
+#          weight: 700
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -104,13 +118,23 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
+fonts:
+     - family: Inter
+       fonts:
+         - asset: fonts/Inter/Inter-Regular.ttf
+         - asset: fonts/Inter/Inter-Italic.ttf
+           style: italic
+         - asset: fonts/Inter/Inter-Bold.ttf
+         - weight: 700
+#     - family: Trajan Pro
+#   fonts:
+#     - family: Inter
+#       fonts:
+#        - asset: fonts/Inter-Regular.ttf
+#        - asset: fonts/Inter-Italic.ttf
+#          style: italic
+#        - asset: fonts/Inter-Bold.ttf
+#          weight: 700
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

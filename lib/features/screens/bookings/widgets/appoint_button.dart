@@ -1,6 +1,8 @@
+import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/appointment/models/appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:status_alert/status_alert.dart';
 
 import '../../../../providers/appointment_provider.dart';
 import '../../../../providers/user_provider.dart';
@@ -32,7 +34,7 @@ class Appointment_button extends StatelessWidget {
         ),
         side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
           {
-            return const BorderSide(color: Colors.grey);
+            return  BorderSide(color: Palette.primaryDartfri);
           }
           return null; // Defer to default value on the theme or widget.
         }),
@@ -66,8 +68,17 @@ class Appointment_button extends StatelessWidget {
     );
     Widget continueButton = TextButton(
       child: Text("Continue"),
-      onPressed:  () {
-        appointmentProvider.cancelAppointment(appointment,context);
+      onPressed:  () async {
+        await appointmentProvider.cancelAppointment(appointment,context);
+        StatusAlert.show(
+          context,
+          duration: Duration(seconds: 3),
+          backgroundColor:Color(0xFFB0E3E8),
+          title: 'Successful',
+          subtitle: 'Appointment Cancelled',
+          configuration: IconConfiguration(icon: Icons.done,size: 20),
+          maxWidth: 200,
+        );
       },
     );
 

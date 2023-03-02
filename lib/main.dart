@@ -7,6 +7,7 @@ import 'package:dartfri/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:intl/intl.dart';
@@ -58,9 +59,12 @@ class _MyAppState extends State<MyApp> {
 
       debugShowCheckedModeBanner: false,
       title: 'Capstone project',
+
       theme: ThemeData(
+        fontFamily: 'Inter',
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary:  Palette.primaryDartfri,
+
             // secondary: const Color(0xFF16E4E4)
             // secondary: const Color(0xFFFFC107),
             // primaryColor: Colors.cyanAccent,
