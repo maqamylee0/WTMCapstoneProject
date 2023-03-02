@@ -1,6 +1,7 @@
 import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/appointment/models/appointment.dart';
 import 'package:dartfri/features/screens/bookings/widgets/reschedule.dart';
+import 'package:dartfri/features/screens/payment/pages/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
@@ -45,8 +46,10 @@ class Appointment_button extends StatelessWidget {
       onPressed: () {
         if(title == 'Reschedule'){
           resheduleAppointment(appointment,context,appointmentProvider);
-        }else{
+        }else if (title == 'Cancel Appointment'){
           cancelAppointment(appointment,context,appointmentProvider);
+        }else{
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentPage(appointment:appointment)));
         }
       },
       child: Text('$title',style: TextStyle(color: Colors.grey, fontSize: 14),),

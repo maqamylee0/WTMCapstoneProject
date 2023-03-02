@@ -173,9 +173,9 @@ class _LocationPageState extends State<LocationPage> {
                               }
 
                             },
-                            child: const Text(
+                            child:  Text(
                               'Use Current Location',
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Palette.secondaryDartfri),
                             )),
 
                         SizedBox(

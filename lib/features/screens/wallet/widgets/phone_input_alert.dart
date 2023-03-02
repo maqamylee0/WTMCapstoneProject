@@ -30,10 +30,10 @@ child: new Text('SUBMIT'),
 onPressed: () {
   Notifications notification = Notifications();
   TimeOfDay _currentTime = TimeOfDay.now();
-  String time = '${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}';
+  String time = '${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')} ${_currentTime.period.toString().split('.')[1].toUpperCase()}';
 
   notification.time = time;
-  notification.title = 'Payment' ;
+  notification.title = 'Payment of ${appointment.amount}' ;
   notification.userId = user.user.uid;
   notification.from = appointment.placeName!;
   try{

@@ -1,3 +1,4 @@
+import 'package:dartfri/features/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -43,9 +44,10 @@ final String email;
                           Navigator.push(
                               context, MaterialPageRoute(builder: (context) => const LoginPage()));
                         },
-                        child: const Text(
+                        child:
+                        Text(
                           'Login',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Palette.secondaryDartfri),
                         )),
                   ),
                 ],

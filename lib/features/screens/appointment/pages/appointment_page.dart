@@ -390,57 +390,107 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
                                   Text("3. Set the date and time for appointment",style:TextStyle(fontWeight: FontWeight.w600,fontSize:17 ),),
 
                                   SizedBox(height: 25,),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(children:[
-                                      Icon(CupertinoIcons.calendar),
-                                      Text(" Date",style:TextStyle(fontWeight: FontWeight.w600,fontSize:15 ),)
+
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Row(children:[
+                                          GestureDetector(
+                                            onTap: (){
+                                              _showDatePicker();
+
+                                            },
+                                            child: SizedBox(
+                                              height: MediaQuery.of(context).size.height*0.18,
+                                              width: MediaQuery.of(context).size.width *0.5,
+                                              child: Card(
+                                                elevation: 5,
+                                                child: Container(
+                                                  padding: EdgeInsets.all(20),
+
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                      children: [
+                                                        Text(" Date",style:TextStyle(fontWeight: FontWeight.w600,fontSize:15 ),),
+                                                        Icon(CupertinoIcons.calendar,size: 40,),
+                                                        Text("${date.day} / ${date.month} / ${date.year}")
+
+                                                      ],
+                                                    )),
+                                              ),
+                                            ),
+                                          ),
+
                                 ],
-                                  ),),
+                                      ),),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(children:[
+                                          GestureDetector(
+                                            onTap: (){
+                                              _showTimePicker();
 
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(Icons.arrow_drop_down),
-                                        color: Colors.grey,
-                                        onPressed: () {
-                                          _showDatePicker();
+                                            },
+                                            child: SizedBox(
+                                              height: MediaQuery.of(context).size.height*0.18,
+                                              width: MediaQuery.of(context).size.width *0.5,
+                                              child: Card(
+                                                elevation: 5,
+                                                child: Container(
+                                                    padding: EdgeInsets.all(20),
 
-                                        },
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                                                      children: [
+                                                        Text(" Time",style:TextStyle(fontWeight: FontWeight.w600,fontSize:15 ),),
+                                                        Icon(CupertinoIcons.time,size: 40,),
+                                                        Text("${time.format(context).toString()}")
+
+                                                      ],
+                                                    )),
+                                              ),
+                                            ),
+
+
+
                                       ),
-                                      Text("${date.day} / ${date.month} / ${date.year}")
-                                    ],
+                                    ],)
                                   ),
-                                  Divider(
-                                    indent: 10,
-                                    endIndent: 10,
-                                    color: Colors.grey,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(children:[
-                                      Icon(CupertinoIcons.time),
-                                      Text(" Time",style:TextStyle(fontWeight: FontWeight.w600,fontSize:15 ),)
-                                    ] ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(Icons.arrow_drop_down),
-                                        color: Colors.grey,
-                                        onPressed: () {
-                                          _showTimePicker();
 
-                                        },
-                                      ),
-                                      Text("${time.format(context).toString()}")
-                                    ],
-                                  ),
-                                  Divider(
-                                    indent: 10,
-                                    endIndent: 10,
-                                    color: Colors.grey,
-                                  ),
+                                  // Row(
+                                  //   children: [
+                                  //     IconButton(
+                                  //       icon: Icon(Icons.arrow_drop_down),
+                                  //       color: Colors.grey,
+                                  //       onPressed: () {
+                                  //
+                                  //       },
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  // Divider(
+                                  //   indent: 10,
+                                  //   endIndent: 10,
+                                  //   color: Colors.grey,
+                                  // ),
+
+                                  // Row(
+                                  //   children: [
+                                  //     IconButton(
+                                  //       icon: Icon(Icons.arrow_drop_down),
+                                  //       color: Colors.grey,
+                                  //       onPressed: () {
+                                  //         _showTimePicker();
+                                  //
+                                  //       },
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  // Divider(
+                                  //   indent: 10,
+                                  //   endIndent: 10,
+                                  //   color: Colors.grey,
+                                  // ),
 
                                 ],
                               ),
@@ -483,13 +533,19 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
           time  = value! ;
           date = DateTime(value!.hour,value!.minute);
           String min;
+          String hr;
+          if(value!.hour < 10){
+            hr = '0${value!.hour}';
+          }else{
+            hr = value!.hour.toString();
+          }
           if(value!.minute < 10 ) {
             min = '0${value!.minute}';
           }
           else{
             min = value!.minute.toString();
           }
-          appointment.time = "${value!.hour}:${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
+          appointment.time = "${hr}:${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
         }
         ));
 

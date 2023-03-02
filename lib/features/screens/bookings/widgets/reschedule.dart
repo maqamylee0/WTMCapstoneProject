@@ -171,9 +171,9 @@ class _RescheduleState extends State<Reschedule> {
 
 
                               },
-                              child: const Text(
+                              child:  Text(
                                 'Reshedule',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Palette.secondaryDartfri),
                               )),
 
                         ],
@@ -207,13 +207,19 @@ class _RescheduleState extends State<Reschedule> {
           time  = value! ;
           date = DateTime(value!.hour,value!.minute);
           String min;
+          String hr;
+          if(value!.hour < 10){
+            hr = '0${value!.hour}';
+          }else{
+            hr = value!.hour.toString();
+          }
           if(value!.minute < 10 ) {
             min = '0${value!.minute}';
           }
           else{
             min = value!.minute.toString();
           }
-          tTime = "${value!.hour} : ${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
+          tTime = "${hr} : ${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
         }
         ));
 

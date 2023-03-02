@@ -40,9 +40,9 @@ class ChoosePage extends StatelessWidget {
                                       builder: (
                                           context) => const SignUpPage()));
                             },
-                            child: const Text(
+                            child:  Text(
                               'Find a Service Provider',
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Palette.secondaryDartfri),
                             )),
                         Column(
                           children: [

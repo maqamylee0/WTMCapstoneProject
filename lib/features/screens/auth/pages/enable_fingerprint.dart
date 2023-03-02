@@ -1,3 +1,4 @@
+import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
 import 'package:dartfri/services/local_auth_fingerprint.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,9 +52,9 @@ class EnableFingerPrint extends StatelessWidget {
                     }
 
                   },
-                  child: const Text(
+                  child:  Text(
                     'Continue',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Palette.secondaryDartfri),
                   )),
             ),
             TextButton(onPressed: (){

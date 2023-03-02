@@ -1,4 +1,7 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/auth/pages/reset_sent.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +50,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _emailController,
+                      validator: (email) =>
+                      email != null && EmailValidator.validate(email)
+                          ? null
+                          : "Enter valid Email",
                       decoration: InputDecoration(
                         labelText: 'Email Address',
                         hintText: 'johndoe@gmail.com',
@@ -72,9 +79,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 context, MaterialPageRoute(builder: (context) => ResetPage(email:_emailController.text)));
                             onPressed(_emailController.text, context);
                           },
-                          child: const Text(
+                          child:  Text(
                             'Reset your Password',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: Palette.secondaryDartfri),
                           )),
                     ),
                   ]),
@@ -82,7 +89,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   void onPressed(email, context) {
-    Auth auth = Auth();
-    auth.passwordReset(email, context);
+    if(_emailController != null){
+      Auth auth = Auth();
+      auth.passwordReset(email, context);
+    }else {
+      BotToast.showText(text: 'Enter an email first');
+    }
+
   }
 }

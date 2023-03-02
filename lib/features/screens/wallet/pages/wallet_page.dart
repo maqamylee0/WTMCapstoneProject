@@ -58,13 +58,13 @@ class _WalletPageState extends State<WalletPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Available Balance',style: TextStyle(fontSize: 15),),
+                      Text('Available Balance',style: TextStyle(fontSize: 15,color: Palette.secondaryDartfri),),
                       isVisible ? IconButton(onPressed: () async {
 
       setState(() {
         isVisible = !isVisible;
       });
-    } , icon: Icon(Icons.visibility,size: 50,)):
+    } , icon: Icon(Icons.visibility,size: 50,color: Palette.secondaryDartfri,)):
                      IconButton(onPressed: () async {
                        final isAuthenticated = await LocalAuthApi.authenticate();
 
@@ -74,11 +74,11 @@ class _WalletPageState extends State<WalletPage> {
                            isVisible = !isVisible;
                          });
                        }
-                     }, icon: Icon(Icons.visibility_off_outlined,size: 50,))
+                     }, icon: Icon(Icons.visibility_off_outlined,size: 40,color: Palette.secondaryDartfri,))
                     ],
                   ),
                   SizedBox(height: 20,),
-                  isVisible? Text('60000',style: TextStyle(fontSize: 20),):Container()
+                  isVisible? Text('60000',style: TextStyle(fontSize: 20,color: Palette.secondaryDartfri),):Container()
                 ],
               ),
             ),

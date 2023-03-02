@@ -23,7 +23,6 @@ class _AppointmentCardState extends State<AppointmentCard> {
 
     super.initState();
 
-    print('cccccccccccccccc${widget.appointment.time},,${widget.appointment.date}');
   }
   @override
   Widget build(BuildContext context) {
@@ -57,7 +56,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Text('Status : ${widget.appointment.status}',style: TextStyle(color: Colors.grey),),
+                      child: Text('Amount : ${widget.appointment.amount}',style: TextStyle(color: Colors.grey),),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,12 +86,12 @@ class _AppointmentCardState extends State<AppointmentCard> {
             Container(
               // width: totalWidth * 0.6,
               child: Row(
-
+               mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
 
                   (widget.action == 'cancel') ? Appointment_button(title:"Reschedule",appointment:widget.appointment):Container(),
-                  SizedBox(width: 10,),
                   (widget.action == 'active') ? Appointment_button(title:"Cancel Appointment",appointment:widget.appointment):Container(),
+                  (widget.appointment.paid == false && widget.action == 'active') ? Appointment_button(title:"PAY",appointment:widget.appointment):Container(),
 
                 ],
               ),

@@ -46,10 +46,10 @@ class HomeNewPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                (users.username) != '' ? Text('Hello , ${users.user.name}!',style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.w600),):
-                                Text('Welcome Back , !',style: TextStyle(fontSize: 22,color: Colors.white),),
+                                (users.username) != '' ? Text('Hello , ${users.user.name}!',style: TextStyle(fontSize: 15,color: Palette.secondaryDartfri,fontWeight: FontWeight.w600),):
+                                Text('Welcome Back , !',style: TextStyle(fontSize: 22,color: Palette.secondaryDartfri),),
                                  SizedBox(height: 20,),
-                                Text('Your location',style: TextStyle(fontSize: 13,color: Colors.black),),
+                                Text('Your location',style: TextStyle(fontSize: 13,color: Palette.secondaryDartfri),),
                                 SizedBox(
                                   height: 30,
                                   child: Row(
@@ -57,8 +57,8 @@ class HomeNewPage extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(Icons.location_on_outlined,size: 16,),
-                                          Text("${users.currentAddress}",style: TextStyle(fontWeight: FontWeight.w600),),
+                                          Icon(Icons.location_on_outlined,size: 16,color: Palette.secondaryDartfri,),
+                                          Text("${users.currentAddress}",style: TextStyle(fontWeight: FontWeight.w600,color: Palette.secondaryDartfri),),
 
                                         ],
                                       ),
@@ -82,8 +82,8 @@ class HomeNewPage extends StatelessWidget {
 
                                       }, child: Row(
                                         children: [
-                                          Text("Change",style: TextStyle(height:0.6,fontSize: 12,color: Colors.black),),
-                                          Icon(Icons.arrow_drop_down,size: 25,color: Colors.black,)
+                                          Text("Change",style: TextStyle(height:0.6,fontSize: 12,color: Palette.secondaryDartfri),),
+                                          Icon(Icons.arrow_drop_down,size: 25,color: Palette.secondaryDartfri,)
 
                                         ],
                                       ))
@@ -164,9 +164,9 @@ class HomeNewPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(height: 5,),
                           Container(
-                            padding: EdgeInsets.fromLTRB(15, 0, 0, 5),
+                            padding: EdgeInsets.fromLTRB(15, 0, 10, 5),
 
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,7 +174,7 @@ class HomeNewPage extends StatelessWidget {
                                 Text('Our Services',style: TextStyle(fontWeight: FontWeight.w600),),
                                 Container(
 
-                                  height: 120,
+                                  height: 100,
                                   width: MediaQuery.of(context).size.width,
                                   child:
 
@@ -187,8 +187,8 @@ class HomeNewPage extends StatelessWidget {
                                           Navigator.push(context, MaterialPageRoute(builder: (context)=>NearbyPlaces()));
                                         },
                                         child: Container(
-                                            width: 100,
-                                            padding: EdgeInsets.all(10),
+                                            width: 80,
+                                            padding: EdgeInsets.all(5),
                                             decoration: BoxDecoration(
                                               // color: Color(0xFFD3FBFF),
                                               // color: Palette.primaryDartfri,
@@ -216,7 +216,7 @@ class HomeNewPage extends StatelessWidget {
                                                         child: Image.asset(HomeData.datas[index].boxIcon),
                                                       ),
                                                     ),
-                                                    Text(HomeData.datas[index].text,style: TextStyle(fontSize: 12),)
+                                                    Text(HomeData.datas[index].text,style: TextStyle(fontSize: 10),)
                                                   ],
                                                 ))),
                                       );
@@ -240,7 +240,6 @@ class HomeNewPage extends StatelessWidget {
 
                                   ],
                                 ),
-                                SizedBox(height: 10,),
                                 Container(
                                   height: 180,
                                   child:

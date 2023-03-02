@@ -36,6 +36,7 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
 
       bottomNavigationBar: BottomNavigationBar(
+
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() => _currentIndex = index);
@@ -53,7 +54,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 CupertinoIcons.car_detailed,
                 color: Colors.black,
               ),
-              label: "Home"),
+              label:  "Home"),
           BottomNavigationBarItem(
               icon: FaIcon(
                 Icons.wallet,

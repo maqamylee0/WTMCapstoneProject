@@ -43,7 +43,7 @@ class _AboutUsState extends State<AboutUs> {
           //Image.asset("assets/img.png")
         ),
       ),
-      Text("About Us",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.cyanAccent),),
+      Text("About Us",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Palette.primaryDartfri),),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Align(
@@ -56,7 +56,7 @@ class _AboutUsState extends State<AboutUs> {
       SizedBox(height: 20,),
       Text("Contact Us",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w600,color: Palette.primaryDartfri),),
       SizedBox(height: 10,),
-      Text("+2347065233467",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w600,),),
+      Text("+256784818527",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w600,),),
       SizedBox(height: 10,),
       Row(
         children: [

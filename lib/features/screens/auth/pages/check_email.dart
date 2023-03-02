@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -68,7 +69,7 @@ class _CheckMailState extends State<CheckMail> {
 
                   Text('A '
                       ' link has been sent \n '
-                      'to Blessinganyebe@gmail.com',style: TextStyle(fontSize: 16),),
+                      'to ${widget.email}',style: TextStyle(fontSize: 16),),
 
                   SizedBox(
                     height: 42,
@@ -81,9 +82,9 @@ class _CheckMailState extends State<CheckMail> {
                           Navigator.push(
                               context, MaterialPageRoute(builder: (context) => const LoginPage()));
                         },
-                        child: const Text(
+                        child:  Text(
                           'Resend',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Palette.secondaryDartfri),
                         )),
                   ),
                 ],
