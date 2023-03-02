@@ -61,6 +61,28 @@ class AppointmentService{
       }
     };
     }
+  Future<void>  reshedule(Appointment appointment,context,data) async {
+    showDialog(context: context,barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()));
+    try{
+      await firebaseFirestore
+          .collection("appointment")
+          .doc(appointment.appointmentId)
+          .update(data);
+      Navigator.pop(context);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
+
+
+    } catch (e) {
+      if (kDebugMode) {
+        Navigator.pop(context);
+
+        print(e);
+        BotToast.showText(text:"Failed to reshedule appointment");
+
+      }
+    };
+  }
 
   Future<void> postAppointment(appointment, String appointmentId) async {
     try{

@@ -489,7 +489,7 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
           else{
             min = value!.minute.toString();
           }
-          appointment.time = "${value!.hour} : ${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
+          appointment.time = "${value!.hour}:${min} ${time.period.toString().split('.')[1].toUpperCase()}" ;
         }
         ));
 

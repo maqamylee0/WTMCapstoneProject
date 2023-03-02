@@ -1,5 +1,6 @@
 import 'package:dartfri/features/pageImports.dart';
 import 'package:dartfri/features/screens/appointment/models/appointment.dart';
+import 'package:dartfri/features/screens/bookings/widgets/reschedule.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
@@ -42,7 +43,7 @@ class Appointment_button extends StatelessWidget {
         // elevation: MaterialStateProperty.all<double>(20),
       ),
       onPressed: () {
-        if(title == 'Reshedule'){
+        if(title == 'Reschedule'){
           resheduleAppointment(appointment,context,appointmentProvider);
         }else{
           cancelAppointment(appointment,context,appointmentProvider);
@@ -101,7 +102,8 @@ class Appointment_button extends StatelessWidget {
     );
   }
 
-  void resheduleAppointment(Appointment appointment, BuildContext context, AppointmentProvider appointmentProvider) {
+  void resheduleAppointment( appointment,context,appointmentProvider) {
 
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Reschedule(appointment:appointment)));
   }
 }

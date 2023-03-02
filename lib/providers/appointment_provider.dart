@@ -110,6 +110,12 @@ class AppointmentProvider extends ChangeNotifier{
     getAppointments();
     notifyListeners();
   }
+  Future<void> reshedule(appointment,context,data) async {
+    await _appointmentService.reshedule(appointment,context,data);
+    // username = user.name!;
+    getAppointments();
+    notifyListeners();
+  }
   // List getAppointmentss()=> appointments;
 
   Future<List> getAppointments() async {

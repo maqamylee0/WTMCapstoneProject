@@ -101,6 +101,7 @@ class Auth{
 
 
   }
+
   Future signIn(context,email,password) async {
 
     showDialog(context: context,barrierDismissible: false,

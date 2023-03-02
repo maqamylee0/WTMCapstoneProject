@@ -9,11 +9,22 @@ class AppointmentCard extends StatefulWidget {
   const AppointmentCard({Key? key, required this.appointment, required this.action,}) : super(key: key);
   final Appointment appointment;
   final String action;
+
+
   @override
   State<AppointmentCard> createState() => _AppointmentCardState();
 }
 
+
+
 class _AppointmentCardState extends State<AppointmentCard> {
+  @override
+  void initState() {
+
+    super.initState();
+
+    print('cccccccccccccccc${widget.appointment.time},,${widget.appointment.date}');
+  }
   @override
   Widget build(BuildContext context) {
     var totalWidth = MediaQuery.of(context).size.width;
